@@ -1,4 +1,5 @@
 #include "tr/index.h"
+#include "transitive_reduction.h"
 #include "graph.h"
 #include "macro.h"
 #include <iostream>
@@ -35,7 +36,6 @@ void transitive_reduction(Graph& G, vector<Macro*>& macro){
 				continue;
 			}
 		}
-		//cout << "remove (" << candidate_edges[i].first << ", " << candidate_edges[i].second << ")" << endl;
 		G.remove_edge(candidate_edges[i].first, candidate_edges[i].second);
 	}
 	destroyGraph();

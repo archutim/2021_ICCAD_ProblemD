@@ -1,12 +1,8 @@
-#ifndef _IO_H_
-#define _IO_H_
-
-#include <iostream>
 #include <vector>
-#include <fstream>
 #include "macro.h"
-
+#include <limits>
 using namespace std;
+typedef std::numeric_limits< double > dbl;
 
 struct pt{
     int x;
@@ -15,8 +11,6 @@ struct pt{
 
 
 class IoData{
-private:
-    
 public:
     int chip_x1, chip_y1, chip_x2, chip_y2;
     int powerplan_width_constraint;
@@ -47,12 +41,10 @@ public:
 
     void parseTxt(ifstream& f);
 
-    void output(string file);
+    void output();
 
     void processDiearea(vector<pt> points);
 
-    IoData(){}
+    IoData(int argc, char *argv[]);
 
 };
-
-#endif
