@@ -1,13 +1,14 @@
 #include "io.h"
 #include "macro.h"
 #include <iostream>
+#include <fstream>
 #include <unistd.h>
 #include <signal.h>
 
 extern bool do_SA;
 extern IoData* IO_data_ptr;
 extern vector<Macro*> macros_best;
-
+extern std::ofstream myfile;
 void sigalrm_handler(int sig)
 {
     // This gets called when the timer runs out.  Try not to do too much here;
@@ -18,6 +19,7 @@ void sigalrm_handler(int sig)
 		alarm(5);
 	}
 	else{
+		myfile.close();
 		IO_data_ptr->macros = macros_best;
 		IO_data_ptr->output();
 		exit(0);
@@ -26,6 +28,7 @@ void sigalrm_handler(int sig)
 
 void sigint_handler(int sig)
 {
+	myfile.close();
  	cout<<"ctrl C interrupt !"<<endl;
  	IO_data_ptr->macros = macros_best;
  	IO_data_ptr->output();

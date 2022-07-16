@@ -156,13 +156,12 @@ double cost_evaluation(vector<Macro*>& macro, Plane* horizontal_plane, Plane* ve
 
 	// Update corner stitch data structure until all cost_area are found
 	bool horizontal_updated = true, vertical_updated = true;
-	while(horizontal_updated && vertical_updated){
+	while(horizontal_updated || vertical_updated){
 		horizontal_updated = false;
 		vertical_updated = false;
 		horizontal_updated = Horizontal_update(horizontal_plane, vertical_plane, horizontal_region, vertical_region, powerplan_cost);
 		vertical_updated = Vertical_update(horizontal_plane, vertical_plane, horizontal_region, vertical_region, powerplan_cost);
 	}
-
 	// Return powerplan cost
 	return powerplan_cost;
 }
