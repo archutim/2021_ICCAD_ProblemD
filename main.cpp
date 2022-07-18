@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
 			double B = (count*xy_sum-x_sum*y_sum)/(count*x2_sum-x_sum*x_sum),
 					A = (y_sum - B * x_sum) / count;
 			double a = pow(2.71828, A), b = pow(2.71828, B);
-			if(a * log(b) * pow(b, count) > -0.05){
+			if(a * log(b) * pow(b, count) > -0.01){
 				Gv.rebuild();
 				Gh.rebuild();
 				Gv.Copy(Gv_checkpoint);
